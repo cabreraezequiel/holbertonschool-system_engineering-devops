@@ -1,2 +1,2 @@
 #!/bin/bash
-rm -R --preserve-root *.js
+ls -R *.js | grep */ | rm -rf
