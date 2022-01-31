@@ -1,0 +1,1 @@
+cat acrostic | cut -c 1 | tr \t
