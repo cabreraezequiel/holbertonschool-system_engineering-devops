@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -printf "\n%AD %AT %p" | head -n 10
+ls -t | head -n 10
