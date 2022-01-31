@@ -1,3 +1,2 @@
 #!/bin/bash
-sort 
-head -n 10 | wc -l
+find -type f -printf "\n%AD %AT %p" | head -n 10
