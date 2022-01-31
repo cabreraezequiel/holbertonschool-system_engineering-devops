@@ -1,2 +1,2 @@
 #!/bin/bash
-rm --recursive *.js
+rm -R --preserve-root *.js
