@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# displays:
+#    To infinity and beyond indefinitely
+#    With a sleep 2 in between each iteration
+#    I am invincible!!! when receiving a SIGTERM signal
+pgrep -f 100-process_and_pid_file >> /var/run/myscript.pid
+handle_sigterm() {
+    echo "I hate the kill command"
+    rm "/var/run/myscript.pid"
+    exit
+}
+
+handle_sigint() {
+    echo "Y U no love me?!"
+}
+
+trap handle_sigterm SIGTERM;
+trap handle_sigint SIGINT;
+trap rm "/var/run/myscript.pid" SIGQUIT;
+
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+    done
