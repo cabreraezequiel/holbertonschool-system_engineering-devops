@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Displays the content of the file /etc/passwd, using the while loop + IFS
+# shellcheck disable=SC2034
+
+echo awk '{print $1}' apache-access.log awk '{print $9}' apache-access.log         # status code (%>s)
