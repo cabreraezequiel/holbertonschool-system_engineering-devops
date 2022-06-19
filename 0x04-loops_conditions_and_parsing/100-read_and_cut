@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Displays username, user id, Home directory path for the user from
+# the content of the file /etc/passwd
+# shellcheck disable=SC2034
+
+FILENAME="/etc/passwd"
+while IFS=: read -r username password userid groupid comment homedir cmdshell
+do
+  echo "$username:$userid:$homedir"
+  done < $FILENAME
