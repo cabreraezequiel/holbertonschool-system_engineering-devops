@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Displays the content of the file /etc/passwd, using the while loop + IFS
+# shellcheck disable=SC2034
+
+FILENAME="/etc/passwd"
+while IFS=: read -r USERNAME PASSWORD USER_ID_INFO GROUP_ID comment HOME_DIRECTORY COMMAND_SHELL
+do
+    echo "The user $USERNAME is part of the $GROUP_ID gang, lives in \
+$HOME_DIRECTORY and rides $COMMAND_SHELL. $USER_ID_INFO's place is protected by\
+ the passcode $PASSWORD, more info about the user here: $comment"
+done < $FILENAME
