@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Displays the content of the file /etc/passwd, using the while loop + IFS
-# shellcheck disable=SC2034
+# Displays the visitor IP along with the HTTP status code from Apache log file
 
-echo awk '{print $1}' apache-access.log awk '{print $9}' apache-access.log         # status code (%>s)
+awk '{print $1 " " $9}' apache-access.log
