@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # displays all active IPv4 IPs on the machine it’s executed on
 
-nc -l(.){0,12}98
+netstat -lnp | grep ':98'
