@@ -1,2 +1,0 @@
-#!/bin/bash
-cat | find -empty | rev | cut d -f 1 | rev
