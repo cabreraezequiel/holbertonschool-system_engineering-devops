@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Configure a custom 404 page
+
+echo "Ceci n'est pas une page" > /var/www/html/error-page
+sed -i "/root \/var\/www\/html;/a error_page 404 \/error_page;\nlocation = /error_page {\nroot \/usr\/share\/nginx\/html;\ninternal;\n}" /etc/nginx/sites-available/default
+service nginx restart
