@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Output: The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
+# shellcheck disable=SC2086
+
+sub_dom() {
+    if [ $# -eq 2 ]
+    then
+	sub=$(dig $2"."$1 | awk -F '.' '/ANSWER SECTION:/{getline; print $1}')
+	ip=$(dig $1 | awk '/ANSWER SECTION:/{getline; print $5}')
+	echo "The subdomain $sub is a A record and points to $ip"
+    elif [ $# -eq 1 ]
+    then
+	for i in www lb-01 web-01 web-02
+	do
+	    ip=$(dig $i"."$1 | awk '/ANSWER SECTION:/{getline; print $5}')
+	    echo "The subdomain $i is a A record and points to $ip"
+	done
+    fi
+    
+}
+
+sub_dom $1 $2
