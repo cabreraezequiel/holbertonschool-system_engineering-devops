@@ -10,15 +10,14 @@ if __name__ == "__main__":
                      (sys.argv[1]))
     user_id = r.json().get("id")
     user_username = r.json().get("username")
-    r = requests.get("https://jsonplaceholder.typicode.com/todos".format
-                     (sys.argv[1]))
+    r = requests.get("https://jsonplaceholder.typicode.com/todos?userId=\
+{}".format(sys.argv[1]))
 
-    with open("{}.json".format(user_id), 'a') as f:
+    with open("{}.json".format(user_id), 'w') as f:
         user_dict_list = []
         for i in r.json():
-            if i.get("userId") == user_id:
-                user_dict = {'task': i.get("title"),
-                             'completed': str(i.get("completed")),
-                             'username': user_username}
-                user_dict_list.append(user_dict)
+            user_dict = {'task': i.get("title"),
+                         'completed': str(i.get("completed")),
+                         'username': user_username}
+            user_dict_list.append(user_dict)
         json.dump({user_id: user_dict_list}, f)
