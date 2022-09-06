@@ -12,7 +12,7 @@ if __name__ == "__main__":
         user_id_name[str(i.get("id"))] = i.get("username")
     r = requests.get("https://jsonplaceholder.typicode.com/todos")
 
-    with open("todo_all_employees.json", 'a') as f:
+    with open("todo_all_employees.json", 'w') as f:
         users = {}
         for k, v in user_id_name.items():
             user_dict_list = []
@@ -20,7 +20,7 @@ if __name__ == "__main__":
                 if str(i.get("userId")) == str(k):
                     user_dict = {'username': v,
                                  'task': i.get("title"),
-                                 'completed': str(i.get("completed"))}
+                                 'completed': i.get("completed")}
                     user_dict_list.append(user_dict)
                 users.update({k: user_dict_list})
         json.dump(users, f)
