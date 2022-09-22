@@ -5,7 +5,7 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    r = requests.get("https://www.reddit.com/r/{}/about.json".format(subreddit),
+    r = requests.get(f"https://www.reddit.com/r/{subreddit}/about.json",
                      headers={'User-Agent': 'Chrome/51.0.2704.103'},
                      allow_redirects=False)
     subscribers = 0
